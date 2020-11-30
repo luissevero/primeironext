@@ -14,13 +14,11 @@ export default class Impressao {
       const header = [
         { text: 'Nome Produto', bold: true, fontSize: 9, margin: [0, 4, 0, 0] },
         { text: 'Qtd. Estoque', bold: true, fontSize: 9, margin: [0, 4, 0, 0] },
-        { text: 'Qtd. Vendido', bold: true, fontSize: 9, margin: [0, 4, 0, 0] },
       ];
       const body = this.dadosParaImpressao.map((prod) => {
         return [
-          { text: prod.nome, fontSize: 8 },
-          { text: prod.qtdEstoque, fontSize: 8 },
-          { text: prod.qtdVendido, fontSize: 8 },
+          { text: prod.titulo, fontSize: 12 },
+          { text: prod.descricao, fontSize: 8 },
         ];
       });
   

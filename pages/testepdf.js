@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
 //import logo from '../assets/logo.png'
@@ -9,9 +9,14 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 function TestePdf() {
 
+  const [itens, setItens] = useState([
+      {titulo: 'Primeiro titulo', descricao: 'Primeira descricao'},
+      {titulo: 'Segundo titulo', descricao: 'Segunda descricao'},]
+  )
     const visualizarImpressao = async () => {
+      console.log('report', itens);
       console.log('report', data);
-      const classeImpressao = new Impressao(data);
+      const classeImpressao = new Impressao(itens);
       const documento = await classeImpressao.PreparaDocumento();
       pdfMake.createPdf(documento).open({}, window.open('', '_blank'));
     }
@@ -21,6 +26,7 @@ function TestePdf() {
         <header className="App-header">
           <p>
             Criando documentos PDF com ReactJS
+
           </p>        
         </header>
         <section className="App-body">
